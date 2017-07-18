@@ -1,0 +1,2 @@
+# ubuntu
+skills in ubuntu
