@@ -1,0 +1,72 @@
+2.1 拷贝
+cp（copy）
+cp 文件1 文件2，是将当前文件1做一份拷贝，文件2.
+文件1、文件2包括目录，目录可以是.
+
+2.2 移动文件
+
+mv（move）
+mv 文件1 文件2
+将文件1移动（或者说重命名）到文件2
+使用mv命令，可以将文件从一个地方移动到另一个地方。由于是移动而不是拷贝，所以最终的文件只会剩下一份。
+这个命令也可以用在重命名上，将文件移动到同一个目录下，改一个名字。
+
+2.3 删除文件和目录
+
+rm（remove），rmdir（remove directory）
+rmdir可以删除目录（前提是目录是空的），尝试删除backups目录，删除一个非空的文件夹会报错。
+
+2.4 在屏幕上显示文件内容
+
+clear （清屏）
+
+cat（concatenate）
+cat命令可以用来显示文件的内容
+% cat science.txt
+
+less
+这个命令会展示一个屏幕长度的文件内容，
+% less science.txt
+如果接着阅读可以使用空格键[Space]向下翻页，[q]键可以退出阅读，在文件很长的时候less比cat要好用。
+
+head
+会在屏幕上打印文件头十行的内容。
+% head science.txt
+也可以指定要打印的行数
+% head -5 science.txt
+
+tail
+会在屏幕上打印文件内容的最后十行。
+% tail science.txt
+
+2.5 检索文件内容
+
+使用less进行简单检索
+用关键字（模式）可以再less中进行简单检索，比如在science.txt文件中检索关键字science。
+% less science.txt
+之后依然处在less程序中（只要不按[q]键退出），按下斜线[/]键，之后输入要检索的关键字。
+/science
+在关键字坐在的地方就会出现高亮提示，按下[n]键来跳转到下一个关键字出现的位置。
+
+grep （别问为什么他叫grep）
+grep是UNIX标准组件之一。使用特定的单子或者模式来检索文件内容。
+% grep science science.txt
+grep会打印出每一个包含关键字的行
+但是如果文件中没有关键字存在的话
+% grep Sceince science.txt
+grep命令是大小写敏感的，所以Science和science是两个不同的关键字。
+如果要忽略大小写区别的话，使用-i选项就可以了。
+% grep -i science science.txt
+检索多个单词的时候需要用单引号来封装。
+% grep -i ‘spinning top‘ science.txt
+grep的一些其它选项是
+打印那些不匹配的行，-v
+前面加上行号-n
+只打印匹配的行的数目-c
+你可以在一个命令中使用多个选项。
+
+wc（word count）
+wc是一个非常方便的小工具，可以用开进行单词计数
+% wc -w science.txt
+也可以用来计算行数
+% wc -l science.txt
